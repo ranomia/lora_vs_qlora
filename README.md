@@ -1,0 +1,2 @@
+# lora_vs_qlora
+LoRAとQLoRAの性能をSQUADデータセットで検証するリポジトリ。
