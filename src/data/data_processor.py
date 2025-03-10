@@ -2,7 +2,7 @@
 
 from datasets import load_dataset
 from transformers import DataCollatorForLanguageModeling
-from src.data.config.config import MAX_LENGTH
+from src.config.config import MAX_LENGTH
 
 def preprocess_squad_data(examples, tokenizer):
     """SQuADデータセットの前処理関数"""
