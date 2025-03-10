@@ -3,7 +3,7 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import get_peft_model, LoraConfig, TaskType
-from ..config.config import (
+from src.config.config import (
     MODEL_NAME,
     LORA_R,
     LORA_ALPHA,

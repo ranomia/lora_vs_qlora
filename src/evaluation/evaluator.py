@@ -3,7 +3,7 @@
 import torch
 import wandb
 from datasets import load_dataset
-from ..config.config import WANDB_PROJECT, WANDB_ENTITY
+from src.config.config import WANDB_PROJECT, WANDB_ENTITY
 
 def evaluate_model(model, tokenizer, mode="lora"):
     """ファインチューニングされたモデルの評価"""

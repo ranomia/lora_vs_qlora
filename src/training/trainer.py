@@ -2,13 +2,13 @@
 
 import wandb
 from transformers import TrainingArguments, Trainer
-from ..config.config import (
+from src.config.config import (
     OUTPUT_DIR,
     BATCH_SIZE,
     EPOCHS,
     LEARNING_RATE
 )
-from .callbacks import WandbCallback
+from src.training.callbacks import WandbCallback
 
 def setup_trainer(model, train_dataset, eval_dataset, data_collator, mode="lora"):
     """トレーナーのセットアップを行う"""
