@@ -1,14 +1,14 @@
 # workspaceファイルを無視する
-lora_vs_qlora.code-workspace
+/lora_vs_qlora.code-workspace
 
-# dataフォルダ下を無視する
-data/
+# 直下のdataフォルダのみ無視する（src/data配下は除外）
+/data/
 
 # jupyterフォルダ下を無視する
-jupyter/
+/jupyter/
 
 # modelフォルダ下を無視する
-model/
+/model/
 
 # .vscodeフォルダ下を無視する
-.vscode/
+/.vscode/
