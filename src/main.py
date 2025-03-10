@@ -3,16 +3,16 @@
 import os
 import wandb
 from huggingface_hub import login
-from src.config.config import (
+from .config.config import (
     OUTPUT_DIR,
     WANDB_PROJECT,
     WANDB_ENTITY
 )
-from src.models.lora import create_lora_model
-from src.models.qlora import create_qlora_model
-from src.data.data_processor import load_and_preprocess_data
-from src.training.trainer import setup_trainer, setup_wandb_tracking
-from src.evaluation.evaluator import evaluate_model, compare_models
+from .models.lora import create_lora_model
+from .models.qlora import create_qlora_model
+from .data.data_processor import load_and_preprocess_data
+from .training.trainer import setup_trainer, setup_wandb_tracking
+from .evaluation.evaluator import evaluate_model, compare_models
 
 def train_lora():
     """LoRAを使用してLLaMA-3.2-1Bをファインチューニング"""
