@@ -19,6 +19,7 @@ def setup_trainer(model, train_dataset, eval_dataset, data_collator, mode="lora"
         per_device_eval_batch_size=BATCH_SIZE,
         # evaluation_strategy="steps",
         eval_steps=500,
+        do_eval=True,
         save_strategy="steps",
         save_steps=500,
         num_train_epochs=EPOCHS,
