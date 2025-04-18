@@ -11,7 +11,7 @@ MODEL_NAME = "meta-llama/Llama-3.2-1B"
 OUTPUT_DIR = "./results"
 MAX_LENGTH = 512
 BATCH_SIZE = 16
-EPOCHS = 1
+EPOCHS = 3
 LEARNING_RATE = 2e-4
 
 # LoRAの設定

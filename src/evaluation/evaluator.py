@@ -16,7 +16,7 @@ def evaluate_model(model, tokenizer, mode="lora"):
         name=f"{mode}-evaluation",
         config={
             "method": mode,
-            "evaluation_samples": 100
+            "evaluation_samples": 1000
         }
     )
 
@@ -27,7 +27,7 @@ def evaluate_model(model, tokenizer, mode="lora"):
     total = 0
     eval_results = []
 
-    for i in range(min(100, len(eval_dataset))):  # 最初の100サンプルのみ評価
+    for i in range(min(1000, len(eval_dataset))):  # 最初の100サンプルのみ評価
         example = eval_dataset[i]
         context = example["context"]
         question = example["question"]
@@ -73,7 +73,7 @@ def evaluate_model(model, tokenizer, mode="lora"):
         # 結果の格納
         eval_results.append({
             "id": i,
-            "context": context[:100] + "...",  # 長いコンテキストを省略
+            "context": context[:1000] + "...",  # 長いコンテキストを省略
             "question": question,
             "ground_truth": ground_truth,
             "prediction": predicted_answer,
@@ -82,7 +82,7 @@ def evaluate_model(model, tokenizer, mode="lora"):
         })
 
         if i % 10 == 0:
-            print(f"Progress: {i}/{min(100, len(eval_dataset))}")
+            print(f"Progress: {i}/{min(1000, len(eval_dataset))}")
             # 中間結果のログ
             current_accuracy = correct / (i + 1)
             wandb.log({
