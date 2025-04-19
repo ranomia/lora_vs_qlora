@@ -8,6 +8,7 @@ from src.config.config import (
     WANDB_PROJECT,
     WANDB_ENTITY
 )
+from src.models.base_model import create_base_model
 from src.models.lora import create_lora_model
 from src.models.qlora import create_qlora_model
 from src.data.data_processor import load_and_preprocess_data
@@ -89,20 +90,25 @@ def main():
     os.makedirs(f"{OUTPUT_DIR}/lora", exist_ok=True)
     os.makedirs(f"{OUTPUT_DIR}/qlora", exist_ok=True)
 
+    # ベースモデルの作成
+    base_model, base_tokenizer = create_base_model()
+    base_accuracy = evaluate_model(base_model, base_tokenizer, mode="base")
+
     # LoRAでのファインチューニング
-    lora_model, lora_tokenizer = train_lora()
-    lora_accuracy = evaluate_model(lora_model, lora_tokenizer, mode="lora")
+    # lora_model, lora_tokenizer = train_lora()
+    # lora_accuracy = evaluate_model(lora_model, lora_tokenizer, mode="lora")
 
     # QLoRAでのファインチューニング
-    qlora_model, qlora_tokenizer = train_qlora()
-    qlora_accuracy = evaluate_model(qlora_model, qlora_tokenizer, mode="qlora")
+    #qlora_model, qlora_tokenizer = train_qlora()
+    #qlora_accuracy = evaluate_model(qlora_model, qlora_tokenizer, mode="qlora")
 
     # 結果の比較
-    results = compare_models(lora_accuracy, qlora_accuracy)
+    # results = compare_models(lora_accuracy, qlora_accuracy)
     print("\n=== Performance Comparison ===")
-    print(f"LoRA Accuracy: {results['lora_accuracy']:.4f}")
-    print(f"QLoRA Accuracy: {results['qlora_accuracy']:.4f}")
-    print(f"Difference: {results['difference']:.4f}")
+    print(f"Base Accuracy: {base_accuracy:.4f}")
+    # print(f"LoRA Accuracy: {results['lora_accuracy']:.4f}")
+    # print(f"QLoRA Accuracy: {results['qlora_accuracy']:.4f}")
+    # print(f"Difference: {results['difference']:.4f}")
 
 if __name__ == "__main__":
     main() 
