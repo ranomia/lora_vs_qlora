@@ -95,20 +95,20 @@ def main():
     base_accuracy = evaluate_model(base_model, base_tokenizer, mode="base")
 
     # LoRAでのファインチューニング
-    # lora_model, lora_tokenizer = train_lora()
-    # lora_accuracy = evaluate_model(lora_model, lora_tokenizer, mode="lora")
+    lora_model, lora_tokenizer = train_lora()
+    lora_accuracy = evaluate_model(lora_model, lora_tokenizer, mode="lora")
 
     # QLoRAでのファインチューニング
-    #qlora_model, qlora_tokenizer = train_qlora()
-    #qlora_accuracy = evaluate_model(qlora_model, qlora_tokenizer, mode="qlora")
+    qlora_model, qlora_tokenizer = train_qlora()
+    qlora_accuracy = evaluate_model(qlora_model, qlora_tokenizer, mode="qlora")
 
     # 結果の比較
-    # results = compare_models(lora_accuracy, qlora_accuracy)
+    results = compare_models(lora_accuracy, qlora_accuracy)
     print("\n=== Performance Comparison ===")
     print(f"Base Accuracy: {base_accuracy:.4f}")
-    # print(f"LoRA Accuracy: {results['lora_accuracy']:.4f}")
-    # print(f"QLoRA Accuracy: {results['qlora_accuracy']:.4f}")
-    # print(f"Difference: {results['difference']:.4f}")
+    print(f"LoRA Accuracy: {results['lora_accuracy']:.4f}")
+    print(f"QLoRA Accuracy: {results['qlora_accuracy']:.4f}")
+    print(f"Difference: {results['difference']:.4f}")
 
 if __name__ == "__main__":
     main() 

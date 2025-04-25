@@ -16,11 +16,15 @@ class WandbCallback:
         """各ステップ終了時にログを記録"""
         # 学習メトリクスをログ
         if state.global_step % 100 == 0:
-            wandb.log({
-                f"{self.log_prefix}train/loss": state.log_history[-1].get("loss", 0),
-                f"{self.log_prefix}train/learning_rate": state.log_history[-1].get("learning_rate", 0),
-                "global_step": state.global_step
-            })
+            # log_historyが最新かつlossを含むか確認
+            if state.log_history and "loss" in state.log_history[-1]:
+                loss = state.log_history[-1]["loss"]
+                lr = state.log_history[-1].get("learning_rate", 0)
+                wandb.log({
+                    f"{self.log_prefix}train/loss": loss,
+                    f"{self.log_prefix}train/learning_rate": lr,
+                    "global_step": state.global_step
+                })
 
     def on_evaluate(self, args, state, control, metrics=None, **kwargs):
         """評価時にメトリクスをログ"""
